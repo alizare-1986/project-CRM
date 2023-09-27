@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
-import CustomerEditPage from "../../components/template/CustomerEditPage";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import CustomerDetailsPage from "../../components/template/CustomerDetailsPage";
 
 function Index() {
-  const [data, setData] = useState(null);
   const router = useRouter();
+  const [data, setData] = useState(null);
   const {
     query: { customerId },
     isReady,
   } = router;
-  
   useEffect(() => {
     if (isReady) {
       fetch(`/api/customer/${customerId}`)
@@ -17,8 +16,7 @@ function Index() {
         .then((data) => setData(data.data));
     }
   }, [isReady]);
-
-  if (data) return <CustomerEditPage data={data} id={customerId} />;
+  if (data) return <CustomerDetailsPage data={data} id={customerId}/>;
 }
 
 export default Index;

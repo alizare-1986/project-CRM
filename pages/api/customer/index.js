@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     return;
   }
   if (req.method === "POST") {
-    const { data } = req.body;
+    const data = req.body.data;
     if (!data.name || !data.lastName || !data.email)
       return res
         .status(400)

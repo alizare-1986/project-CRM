@@ -9,7 +9,7 @@ function AddCustomerPage() {
     email: "",
     phone: "",
     address: "",
-    postal: "",
+    postalCode: "",
     date: "",
     products: [],
   });

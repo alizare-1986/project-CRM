@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   }
   if (req.method === "PATCH") {
     const id = req.query.customerId;
-    const data = rq.body.data;
+    const data = req.body.data;
 
     try {
       const customer = await Customer.findOne({ _id: id });
@@ -26,7 +26,8 @@ export default async function handler(req, res) {
       customer.date = data.date;
       customer.products = data.products;
       customer.updatedAt = Date.now();
-      res.status(200).json({status:"success",data:customer})
+      customer.save();
+      res.status(200).json({ status: "success", data: customer });
     } catch (err) {
       console.log(err);
       res.status(500).json({

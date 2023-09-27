@@ -3,7 +3,6 @@ import { useState } from "react";
 import Form from "../module/Form";
 import moment from "moment";
 
-
 function CustomerEditPage({ data, id }) {
   const date = data.date ? moment(data.date).utc().format("YYYY-MM-DD") : "";
   const [form, setForm] = useState({
@@ -17,9 +16,7 @@ function CustomerEditPage({ data, id }) {
     date: date,
   });
   const router = useRouter();
-  const cancelHandler = () => {
-    router.push("/");
-  };
+
   const saveHandler = async () => {
     const res = await fetch(`/api/edit/${id}`, {
       method: "PATCH",
@@ -28,6 +25,9 @@ function CustomerEditPage({ data, id }) {
     });
     const data = await res.json();
     if (data.status === "success") router.push("/");
+  };
+  const cancelHandler = () => {
+    router.push("/");
   };
   return (
     <div className="customer-page">
