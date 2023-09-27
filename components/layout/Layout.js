@@ -4,7 +4,7 @@ function Layout({children}) {
     return (
         <>
         <header className="header">
-        <h2>ProjecT CRM</h2>
+        <Link href={"/"}>Home</Link><h2>ProjecT CRM</h2>
         <Link href={"/add-customer"}>Add customer</Link>
         </header>
         <div className="main">
