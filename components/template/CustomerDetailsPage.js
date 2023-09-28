@@ -1,15 +1,15 @@
 import moment from "moment";
 import Link from "next/link";
-import React, { useReducer } from "react";
+import { useRouter } from "next/router";
 
 function CustomerDetailsPage({ data }) {
-  const router = useReducer();
+  const router = useRouter();
   const deleteHandler = async () => {
     const res = await fetch(`/api/delete/${data._id}`, {
       method: "DELETE",
     });
     const newRes = await res.json();
-    if (newRes.status === "success") router.push("/");
+    if (newRes.status === "success")router.push("/");
   };
   return (
     <div className="customer-detail">

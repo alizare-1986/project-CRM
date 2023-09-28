@@ -16,7 +16,7 @@ function Index() {
         .then((data) => setData(data.data));
     }
   }, [isReady]);
-  if (data) return <CustomerDetailsPage data={data} id={customerId}/>;
+  if (data) return <CustomerDetailsPage data={data} />;
 }
 
 export default Index;
